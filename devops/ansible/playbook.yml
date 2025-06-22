@@ -1,0 +1,43 @@
+---
+- name: Configuration du serveur EC2
+  hosts: all
+  remote_user: ubuntu
+  vars:
+    ansible_ssh_private_key_file: myKey.pem
+  become: yes
+
+
+  tasks:
+    - name: Mise à jour des paquets APT
+      apt:
+        update_cache: yes
+
+    - name: Installer Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Démarrer et activer Docker
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Vérifier la version de Python
+      command: python3 --version
+      register: python_version
+
+    - name: Afficher la version de Python
+      debug:
+        var: python_version.stdout
+
+    - name: Installer Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Démarrer et activer Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
