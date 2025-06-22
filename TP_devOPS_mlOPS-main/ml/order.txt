@@ -1,0 +1,24 @@
+# Ordre d'exécution du projet TP_devOPS
+
+1. train_simple.py
+   - Entraînement simple du modèle (sans tracking MLflow)
+
+2. train_with_tracking.py
+   - Entraînement du modèle avec tracking MLflow (recommandé)
+
+3. run_project.py
+   - Lance plusieurs expériences avec différents hyperparamètres (tracking MLflow)
+
+4. register_model.py
+   - Enregistre le meilleur modèle dans le Model Registry MLflow
+
+5. load_model.py
+   - Charge le modèle enregistré et effectue une prédiction
+
+6. (Optionnel) api.py
+   - Lance une API FastAPI pour servir le modèle (après avoir enregistré un modèle)
+   - Commande : python api.py ou via Docker
+
+7. (Optionnel) mlflow ui
+   - Lance l'interface web MLflow pour visualiser les expériences et modèles
+   - Commande : mlflow ui 
